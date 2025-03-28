@@ -144,16 +144,16 @@
                 switch (action) {
                     case 1 -> {location = 2;} //JUNGLA
                     case 2 -> {
-                        if (inventario.contains("| Pala |")) {
-                            out.println("\n--------------------\n\nYa guardaste la pala en tu inventario.");
+                        if (inventario.contains("| Pico |")) {
+                            out.println("\n--------------------\n\nYa guardaste la pico en tu inventario.");
                             out.println("Actualmente este es tu inventario: " + inventario);
                         }
                         else {
-                            out.println("\n--------------------\n\n¡Hallaste una pala!");
-                            objeto03 += "| Pala |";
+                            out.println("\n--------------------\n\n¡Hallaste una pico!");
+                            objeto03 += "| Pico |";
                             inventario += objeto03;
                             out.println("Actualmente este es tu inventario: " + inventario);
-                            out.println("\nAhora podrás excavar en lugares donde puede que halla algo valioso oculto.\n¡Puede serte útil en ciertas zonas!");
+                            out.println("\nAhora podrás excavar o romper en lugares donde puede que halla algo valioso oculto.\n¡Puede serte útil en ciertos lugares!");
                             out.println("Regresemos y sigamos explorando.");  
                         }
                     }
@@ -165,8 +165,53 @@
             
             //ACERTIJOS Y PUNTUACIÓN
             
-            //Acá van los acertijos
+            //ACERTIJO DE LA CUEVA
+            if (location == 6) {
+                if (inventario.contains("| Antorcha |")) {        
+                    out.println("\n--------------------\n\n¡Tienes la antorcha! Puedes explorar dentro.\nLlegaste al fondo de la cueva y ves un cofre con seguro y una nota que dice:\n\n'¿Qué será, qué es, que mientras más grande, menos ves?'\n\nSi respondes el acertijo se abrirá el cofre.");
+                    out.println("\n¿Qué deseas hacer?\n");
+                    out.println("1. Tratar de resolver la adivinanza\n2. Dejarlo para más adelante\n3. Salir del juego");
+                    out.print("\nIngrese el número que determinará tu acción: ");
+                    action = Integer.parseInt(in.readLine());
 
+                    //ACCIONES QUE SE PUEDEN HACER DENTRO DE LA CUEVA
+                    switch (action) {
+                        case 1 -> {
+                            out.print("\nIntenta adivinar la respuesta correcta: ");
+                            respuestaAdivinanzaCueva = in.readLine();
+                            if (respuestaAdivinanzaCueva.equalsIgnoreCase("La oscuridad")) {
+                                puntos ++;
+                                if (inventario.contains("| Libro traductor |")) {
+                                    out.println("\n--------------------\n\nYa guardaste el libro traductor en tu inventario.");
+                                    out.println("Actualmente este es tu inventario: " + inventario);
+                                }
+                                else {
+                                    out.println("\n--------------------\n\n¡Respuesta correcta! El cofre se ha abierto.\nHallaste un libro que sirve para traducir símbolos extraños.");
+                                    objeto04 = "| Libro traductor |";
+                                    inventario += objeto04;
+                                    out.println("Actualmente este es tu inventario: " + inventario);
+                                    out.println("\n¡Obtuviste +" + puntos + " punto por resolver el acertijo!\nLlevas "+ puntos + "/4 acertijos resueltos. ¡Ve a por más!");
+                                    out.println("\nEn fin, salgamos de la cueva..."); 
+                                    location = 3;
+                                }
+                            } 
+                            else {
+                                out.println("\n--------------------\n\nRespuesta incorrecta...");
+                                location = 6;                               
+                            }
+                        }
+                        case 2 -> {location = 3;}
+                        case 3 -> {jugando = 0;}
+                        default -> {out.println("\n--------------------\n\nIngresaste una opción inválida. ¡Intenta de nuevo!");}
+                    }
+                }
+                else {
+                    out.println("Está muy oscuro. Quizá más adelante halles algo que te pueda servir para ver mejor.");
+                    location = 3;
+                }
+            }
+            //ACERTIJO RUINAS
+            
         }
         //MENSAJE DE DESPEDIDA DEL VIDEOJUEGO
         out.println("\n--------------------\n\nGracias por jugar. ¡Hasta la próxima!");
