@@ -29,7 +29,9 @@
          
         //DECLARACIÓN DE VARIABLES
         int location = 1, action, jugando = 1, puntos = 0;
+        boolean faro = false;
         String inventario = "", objetoMapa, objetoAntorcha, objetoPico, objetoLibro, objetoArmadura, objetoEspada, respuestaAcertijos;
+        
     
         //MENSAJE AL INICIAR EL VIDEOJUEGO
         out.println("\n¡BIENVENIDO AL JUEGO DE LA AVENTURA EN ISLA DEL TESORO!");
@@ -156,7 +158,29 @@
                             out.println("\nAhora podrás excavar o romper en lugares donde puede que halla algo valioso oculto.\n¡Puede serte útil en ciertos lugares!");  
                         }
                     }
-                    case 3 -> {location = 8;} //ACERTIJO
+                    case 3 -> {
+                        if (inventario.contains("| Armadura |") || inventario.contains("| Espada |")) {
+                            out.println("\n--------------------\n\n¡Subiste a la montaña!\n(POR AHORA HASTA AQUÍ TERMINA EL JUEGO)");
+                            jugando = 0;
+                        }
+                        else {
+                            out.println("\n--------------------\n\nLo más recomentable es subir con algún objeto que mejore tus habilidades para el combate.\n¿Estás seguro que deseas subir sin equipamiento útil?");
+                            out.println("\n¿Qué deseas hacer?\n");
+                            out.println("1. Subir de todas formas\n2. No subir y seguir explorando\n3. Finalizar partida");
+                            out.print("\nIngrese el número que determinará tu acción: ");
+                            action = Integer.parseInt(in.readLine());
+
+                            switch (action) {
+                                case 1 -> {
+                                out.println("\n--------------------\n\n¡Subiste a la montaña!\n(POR AHORA HASTA AQUÍ TERMINA EL JUEGO)");
+                                jugando = 0;
+                            }
+                                case 2 -> {location = 5;}
+                                case 3 -> {jugando = 0;}
+                                default -> {out.println("\n--------------------\n\nIngresaste una opción inválida. ¡Intenta de nuevo!");}
+                            }
+                        }
+                    }
                     case 4 -> {jugando = 0;}  //FINALIZAR PARTIDA
                     default -> {out.println("\n--------------------\n\nIngresaste una opción inválida. ¡Intenta de nuevo!");}
                 }
@@ -164,6 +188,7 @@
 
             //BAHÍA PIRATA (ZONA SECRETA)
             if (location == 6) {
+                faro = true;
                 out.println("\n--------------------\n\n¡Estás en la bahía pirata! La zona más secreta de la isla.\nA lo lejos ves el faro tal como se esperaba y cerca tuyo ves un naufragio de lo que parece ser que fue un barco pirata.");
                 out.println("\n¿Qué deseas hacer?\n");
                 out.println("1. Volver a las ruinas\n2. Examinar el barco\n3. Finalizar partida");
@@ -306,7 +331,17 @@
 
         }
         //PUNTAJE DE LA PARTIDA Y MENSAJE DE DESPEDIDA DEL VIDEOJUEGO
+        if (inventario.contains("| Libro traductor |")) {
+            puntos ++;
+        } 
+        else if (faro == true) {
+            puntos ++;
+        }
+        else if (inventario.contains("| Armadura |") || inventario.contains("| Espada |")) {
+            puntos ++;
+        }
+        out.println("\n--------------------\n\nObtuviste un total de +" + puntos + " en tu recorrido.\n¡Completaste " + puntos + "/3 acertijos disponibles!");
         
-        out.println("\n--------------------\n\nGracias por jugar. ¡Hasta la próxima!");
+        out.println("\nGracias por jugar. ¡Hasta la próxima!");
     }   
 } //FIN DEL PROGRAMA
