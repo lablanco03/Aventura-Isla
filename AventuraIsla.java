@@ -20,11 +20,12 @@
  import java.io.*;
 
  public class AventuraIsla {    
-     //CREAR LOS OBJETOS DE ENTRADA Y SALIDA
+     
+    //OBJETOS DE ENTRADA Y SALIDA
      static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
      static PrintStream out = System.out;
  
-     //CREAR EL MAIN PRINCIPAL
+     //MAIN PRINCIPAL
      public static void main(String[] args) throws IOException {
          
         //DECLARACIÓN DE VARIABLES
@@ -170,6 +171,7 @@
                             out.print("\nIngrese el número que determinará tu acción: ");
                             action = Integer.parseInt(in.readLine());
 
+                            //ELEGIR SI SUBIR O NO LA MONTAÑA SIN EL EQUIPO ADECUADO
                             switch (action) {
                                 case 1 -> {
                                 out.println("\n--------------------\n\n¡Subiste a la montaña!\n(POR AHORA HASTA AQUÍ TERMINA EL JUEGO)");
@@ -181,7 +183,7 @@
                             }
                         }
                     }
-                    case 4 -> {jugando = 0;}  //FINALIZAR PARTIDA
+                    case 4 -> {jugando = 0;} //FINALIZAR PARTIDA
                     default -> {out.println("\n--------------------\n\nIngresaste una opción inválida. ¡Intenta de nuevo!");}
                 }
             }
@@ -290,6 +292,7 @@
                 out.print("\nIngrese el número que determinará tu acción: ");
                 action = Integer.parseInt(in.readLine());
 
+                //ACCIONES QUE SE PUEDEN HACER DENTRO DEL BARCO PIRATA
                 switch (action) {
                     case 1 -> {
                         out.print("\nIntenta descifrar la palabra oculta: ");
@@ -300,6 +303,8 @@
                             out.println("1. Llevarte la armadura\n2. Llevarte la espada\n3. Finalizar partida");
                             out.print("\nIngrese el número que determinará tu acción: ");
                             action = Integer.parseInt(in.readLine());
+
+                            //ELEGIR QUÉ OBJETO LLEVARSE DEL BARCO PIRATA
                             switch (action) {
                                 case 1 -> {
                                     objetoArmadura = "| Armadura |";
@@ -330,6 +335,7 @@
             }
 
         }
+
         //PUNTAJE DE LA PARTIDA Y MENSAJE DE DESPEDIDA DEL VIDEOJUEGO
         if (inventario.contains("| Libro traductor |")) {
             puntos ++;
