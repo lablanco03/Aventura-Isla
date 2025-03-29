@@ -96,7 +96,7 @@
                 //ACCIONES QUE SE PUEDEN HACER EN LA CUEVA
                 switch (action) {
                     case 1 -> {location = 2;} //JUNGLA
-                    case 2 -> {location = 6;} //ACERTIJO
+                    case 2 -> {location = 7;} //ACERTIJO
                     case 3 -> {jugando = 0;}  //SALIR
                     default -> {out.println("\n--------------------\n\nIngresaste una opción inválida. ¡Intenta de nuevo!");}
                 }
@@ -106,7 +106,7 @@
             if (location == 4) {
                 out.println("\n--------------------\n\nLlegaste a unas ruinas.\nParecen antiguas y tienen unos símbolos extraños escritos en sus paredes.");
                 out.println("\n¿Qué deseas hacer?\n");
-                out.println("1. Ir al Sur\n2. Recoger objeto en la entrada\n3. Examinar símbolos\n4. Salir del juego");
+                out.println("1. Ir al Sur\n2. Recoger objeto en la entrada\n3. Examinar símbolos extraños\n4. Salir del juego");
                 out.print("\nIngrese el número que determinará tu acción: ");
                 action = Integer.parseInt(in.readLine());
 
@@ -126,7 +126,7 @@
                             out.println("\nPuedes usarla para iluminar espacios oscuros o calentarte si hace frío.\n¡Te será muy útil en ciertos sitios!");   
                         } 
                     }
-                    case 3 -> {location = 7;} //ACERTIJO
+                    case 3 -> {location = 8;} //ACERTIJO
                     case 4 -> {jugando = 0;} //SALIR
                     default -> {out.println("\n--------------------\n\nIngresaste una opción inválida. ¡Intenta de nuevo!");}
                 }
@@ -153,8 +153,7 @@
                             objeto03 += "| Pico |";
                             inventario += objeto03;
                             out.println("Actualmente este es tu inventario: " + inventario);
-                            out.println("\nAhora podrás excavar o romper en lugares donde puede que halla algo valioso oculto.\n¡Puede serte útil en ciertos lugares!");
-                            out.println("Regresemos y sigamos explorando.");  
+                            out.println("\nAhora podrás excavar o romper en lugares donde puede que halla algo valioso oculto.\n¡Puede serte útil en ciertos lugares!");  
                         }
                     }
                     case 3 -> {location = 8;} //ACERTIJO
@@ -162,11 +161,15 @@
                     default -> {out.println("\n--------------------\n\nIngresaste una opción inválida. ¡Intenta de nuevo!");}
                 }
             }
+
+            //BAHÍA PIRATA (ZONA SECRETA)
+
+
             
             //ACERTIJOS Y PUNTUACIÓN
             
             //ACERTIJO DE LA CUEVA
-            if (location == 6) {
+            if (location == 7) {
                 if (inventario.contains("| Antorcha |")) {        
                     out.println("\n--------------------\n\n¡Tienes la antorcha! Puedes explorar dentro.\nLlegaste al fondo de la cueva y ves un cofre con seguro y una nota que dice:\n\n'¿Qué será, qué es, que mientras más grande, menos ves?'\n\nSi respondes el acertijo se abrirá el cofre.");
                     out.println("\n¿Qué deseas hacer?\n");
@@ -190,7 +193,7 @@
                                     objeto04 = "| Libro traductor |";
                                     inventario += objeto04;
                                     out.println("Actualmente este es tu inventario: " + inventario);
-                                    out.println("\n¡Obtuviste +" + puntos + " punto por resolver el acertijo!\nLlevas "+ puntos + "/4 acertijos resueltos. ¡Ve a por más!");
+                                    out.println("\n¡Obtuviste +" + puntos + " punto por resolver el acertijo!\nLlevas "+ puntos + "/3 acertijos resueltos. ¡Muy bien!");
                                     out.println("\nEn fin, salgamos de la cueva..."); 
                                     location = 3;
                                 }
@@ -206,14 +209,47 @@
                     }
                 }
                 else {
-                    out.println("Está muy oscuro. Quizá más adelante halles algo que te pueda servir para ver mejor.");
+                    out.println("\n--------------------\n\nEstá muy oscuro.\nQuizá más adelante halles algo que te pueda servir para ver mejor.");
                     location = 3;
                 }
             }
-            //ACERTIJO RUINAS
             
+            //ACERTIJO RUINAS
+            if (location == 8) {
+                if (inventario.contains("| Libro traductor |")) {
+                    puntos ++;
+                    out.println("\n--------------------\n\n¡Tienes el libro traductor! Puedes interpretar los símbolos en la pared:\n\n'Tras estas ruinas encuentras el camino, romper el muro debes para llegar a tu destino.\nSoy vigilante y guardián de mi playa, con mis ojos guío a todo el que me halla\nCuando me veas, sabrás que has llegado y una recompensa te espera al otro lado.'\n\n¡El mensaje oculto nos dice que debes tirar abajo esta pared!");
+                    out.println("\n¡Obtuviste +" + puntos + " punto por resolver el acertijo!\nLlevas "+ puntos + "/3 acertijos resueltos. ¡Muy bien!");
+                    out.println("\n¿Qué deseas hacer?\n");
+                    out.println("1. Derribar el muro\n2. Dejarlo para más adelante\n3. Salir del juego");
+                    out.print("\nIngrese el número que determinará tu acción: ");
+                    action = Integer.parseInt(in.readLine());
+
+                    //ACCIONES QUE SE PUEDEN HACER EN LAS RUINAS
+                    switch (action) {
+                        case 1 -> {
+                            if (inventario.contains("| Pico |")) {
+                                out.println("\n--------------------\n\n¡Tienes el pico! Puedes derribar el muro e ir a explorar al otro lado.\nHas tirado la pared y encontraste un camino oculto. Sigues su largo trayecto y llegas a una nueva zona secreta...");
+                                location = 9; //BAHÍA PIRATA
+                                
+                            } 
+                            else {
+                                out.println("\n--------------------\n\nEl muro es muy grande y pesado, necesitas una herramienta que te ayude.\nQuizá más adelante halles algo que te pueda servir.");
+                                location = 4;
+                            }
+                        }
+                        case 2 -> {location = 4;}
+                        case 3 -> {jugando = 0;}
+                        default -> {out.println("\n--------------------\n\nIngresaste una opción inválida. ¡Intenta de nuevo!");}   
+                    }
+                }
+                else {
+                    out.println("\n--------------------\n\nNo tienes el conocimiento suficiente o una guía para entender qué dicen estos símbolos.\nQuizá más adelante halles algo que te pueda servir.");
+                    location = 4;
+                }
+            }
         }
         //MENSAJE DE DESPEDIDA DEL VIDEOJUEGO
         out.println("\n--------------------\n\nGracias por jugar. ¡Hasta la próxima!");
-    }
+    }   
 } //FIN DEL PROGRAMA
