@@ -12,7 +12,7 @@
  * GRUPO E
  * 
  * ESTUDIANTES:
- * KENNETH CHAVES SOTO
+ * KENNETH CHAVES COTO
  * LUIS ALEJANDRO BLANCO ÁLVAREZ
  **/ 
 
@@ -60,7 +60,7 @@
                             objetoMapa = "| Mapa |";
                             inventario += objetoMapa;
                             out.println("Actualmente este es tu inventario: " + inventario);
-                            out.println("\nEl mapa muestra lo siguiente:\nExiste una densa jungla en el centro de la isla,\nal norte hay unas ruinas antiguas,\nal oeste una gran cueva,\nal este una inmensa montaña,\nal sur la playa en la que te encuentras.");
+                            out.println("\nEl mapa muestra lo siguiente:\n\nExiste una densa jungla en el centro de la isla,\nal norte hay unas ruinas antiguas,\nal oeste una gran cueva,\nal este una inmensa montaña,\nal sur la playa en la que te encuentras.");
                             out.println("\n¡Recuerda bien estas instrucciones!"); 
                         } 
                     }
@@ -269,7 +269,7 @@
                                 
                             } 
                             else {
-                                out.println("\n--------------------\n\nEl muro es muy grande y pesado, necesitas una herramienta que te ayude.\nQuizá más adelante halles algo que te pueda servir.");
+                                out.println("\n--------------------\n\nEl muro es muy grande y pesado, necesitas una herramienta que te ayude a derribarlo.\nQuizá más adelante halles algo que te pueda servir.");
                                 location = 4;
                             }
                         }
@@ -346,7 +346,7 @@
         else if (inventario.contains("| Armadura |") || inventario.contains("| Espada |")) {
             puntos ++;
         }
-        out.println("\n--------------------\n\nObtuviste un total de +" + puntos + " en tu recorrido.\n¡Completaste " + puntos + "/3 acertijos disponibles!");
+        out.println("\n--------------------\n\nObtuviste un total de +" + puntos + " puntos en tu recorrido.\n¡Completaste " + puntos + "/3 acertijos disponibles!");
         
         out.println("\nGracias por jugar. ¡Hasta la próxima!");
     }   
