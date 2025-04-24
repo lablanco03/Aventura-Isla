@@ -114,7 +114,7 @@ public class AventuraIsla {
         Random aleatorio = new Random();
         int action, vidaJugador = 60, vidaJefe = 120;
         
-        out.println("\n--------------------\n\n¡Subiste a la montaña!\nLLegaste y lo primero que notas es un cofre del tesoro en el centro de un cráter.\nSin embargo, si deseas lo que hay en su interior deberás derrotar al guardián del cofre.\n\n¡Debes derrotar al guardián del cofre a un combate a muerte! ¡El vencedor conservará el tesoro!");
+        out.println("\n--------------------\n\n¡Subiste a la montaña!\nLLegaste y lo primero que notas es un cofre del tesoro en el centro del cráter de un volcán extinto.\nSin embargo, si deseas lo que hay en su interior deberás derrotar al guardián del cofre,\n una gran bestia codiciosa que ama todo lo que brilla y reluce.\n\n¡Debes derrotar al guardián del cofre a un combate a muerte! ¡El vencedor conservará el tesoro!");
         out.println("\n¿Qué deseas hacer?\n");
         out.println("1. Retar al guardián\n2. Dejarlo para más adelante\n3. Ver inventario\n4. Finalizar partida");
         out.print("\nIngrese el número que determinará tu acción: ");
@@ -135,7 +135,7 @@ public class AventuraIsla {
                 out.println("\n--------------------\n\nEstas son reglas del combate:\n\nEl guardián constantemente está atacando y tú podrás decidir qué acción tomar.\n- Atacar: Generas daño considerable, pero el guardián puede lastimarte igual.\n- Defenderte: Reduces considerablemente el daño recibido, pero no dañarás al guardián.\n- Esquivar: Movimiento arriesgado, donde alguno de los 2 sale ileso y el otro con mucho daño.");
 
                 while (vidaJugador > 0 && vidaJefe > 0) {
-
+                    
                     int ataqueJugador = aleatorio.nextInt(11) + 20, //20-30 de daño
                     ataqueJefe = aleatorio.nextInt(21) + 10, //10-30 de daño
                     ataqueLigero = aleatorio.nextInt(11),//0-10 de daño
@@ -393,7 +393,7 @@ public class AventuraIsla {
     }
 
 
-    //RUTINA ZONA SECRETA DE LA BAHÍA
+    //RUTINA ZONA SECRETA DE LA BAHÍA PIRATA
     static int zonaBahiaPirata(String[] inventario, boolean[] faro) throws IOException {
 
         int action;
